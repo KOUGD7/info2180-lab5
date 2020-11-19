@@ -20,17 +20,38 @@ header{
     padding: 50px;
 }
 
-#lookup{
-    background-color: #d85a5a;
+#btns{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#lookup_country{
+    background-color: #3f9458;
     color: white;
     display: inline-block;
     padding: 10px;
     margin: 10px;
-    border: 1px solid #d85a5a;
+    border: 1px solid #3f9458;
     border-radius: 5px;
     font-weight: bold;
-    width: 33%;
+    width: 16%; 
 }
+
+#lookup_city{
+    background-color: #0b838b;
+    color: white;
+    display: inline-block;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #0b838b;
+    border-radius: 5px;
+    font-weight: bold;
+    width: 16%; 
+}
+
 
 input[type=search], select {
     padding: 10px;
