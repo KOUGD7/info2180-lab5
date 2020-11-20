@@ -17,23 +17,22 @@ $context = htmlentities($context);
 if ($context == 'cities'){
   $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
   
-  $stmt = $conn->query("SELECT * FROM cities WHERE country_code in (SELECT code FROM countries WHERE name LIKE '%$country%')");
+  $stmt = $conn->query("SELECT * FROM cities WHERE country_code in (SELECT distinct(code) FROM countries WHERE name LIKE '%$country%')");
 
   $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
 else{
   $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
+  
   $stmt = $conn->query("SELECT * FROM countries WHERE name LIKE '%$country%'");
+  
   $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
-
-
-?>
+} ?>
 
 <?php
 if($context=="cities") {?>
-  <table>
+  <table id = "citytab">
     <tr>
       <th>Name</th>
       <th>District</th>
@@ -53,7 +52,7 @@ if($context=="cities") {?>
 }
 else { ?>
 
-  <table>
+  <table id = "countrytab">
     <tr>
       <th>Name</th>
       <th>Continent</th>
@@ -72,5 +71,4 @@ else { ?>
   </table>
 
 <?php        
-    }
-?>
+    } ?>
